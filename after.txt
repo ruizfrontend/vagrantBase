@@ -1,0 +1,7 @@
+# Configurar cuenta llaves ssh para github & bitbucket:
+
+ssh-keygen -t rsa -C "ruizfrontend@gmail.com"
+[ENTER][ENTER][ENTER]
+cat .ssh/id_rsa.pub
+
+Copiar el lo que 
