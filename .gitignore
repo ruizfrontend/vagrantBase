@@ -1,2 +1,4 @@
-.vagrant
 www
+.vagrant
+vagrant.sublime-*
+

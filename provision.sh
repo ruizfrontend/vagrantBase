@@ -3,8 +3,12 @@ apt-get update
 apt-get install -y curl libcurl3 gthumb trash-cli zsh
 apt-get install -y mlocate && updatedb
 
+sudo add-apt-repository ppa:danmbox/ppa
+sudo apt-get update
+
 # Apache and PHP
-apt-get install -y apache2 libapache2-mod-php5 php-pear php5-xsl php5-gd php5-curl php5-json php5-cli php5-curl php5-mcrypt php5-gd vim
+apt-get install -y apache2 libapache2-mod-php5 php-pear php5-xsl php5-gd php5-curl php5-json php5-cli php5-curl php5-mcrypt php5-gd 
+apt-get install -y vim libjpeg-progs pngquant gifsicle nasm ruby-dev
 a2enmod rewrite
 cp /var/sites/vagrant/files/vagrant.vhost /etc/apache2/sites-available/
 a2ensite vagrant.vhost
@@ -62,10 +66,7 @@ gem install compass
 gem install rake
 
 # dotfiles
-curl --silent https://raw.githubusercontent.com/paulmillr/dotfiles/master/install.sh | sh
 curl https://raw.githubusercontent.com/skwp/dotfiles/master/vimrc > .vimrc
-mkdir www
 echo 'cd /var/sites/vagrant/www' >> .bashrc
-echo 'zsh' >> .bashrc
 ln -s /var/sites/vagrant/www www
 ln -s /var/sites/vagrant/ vagrant

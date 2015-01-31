@@ -2,6 +2,13 @@
 
 ssh-keygen -t rsa -C "ruizfrontend@gmail.com"
 [ENTER][ENTER][ENTER]
-cat .ssh/id_rsa.pub
+cat ~/.ssh/id_rsa.pub
 
-Copiar el lo que 
+Copiar lo que muestra la pantalla y pegarlo en tu perfil de github/bitbucket:
+https://bitbucket.org/account/user/ruizfrontend/ssh-keys/
+https://github.com/settings/ssh
+
+Renombrar host en la máquina anfitriona (/etc/hosts en OSX y unix y en %systemroot%\system32\drivers\etc\hosts)
+192.168.33.10 myVagrant.com
+
+Accede a tu servidor en tu navegador: myVagrant.com

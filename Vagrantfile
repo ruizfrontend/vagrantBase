@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   
-  config.vm.box = "hashicorp/precise32"
+  config.vm.box = "ubuntu/trusty64"
   config.vm.provision :shell, :path => "provision.sh"
 
   # Disable automatic box update checking. If you disable this, then
@@ -59,7 +59,7 @@ Vagrant.configure(2) do |config|
   #   # Customize the amount of memory on the VM:
 
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "machina2"
+    vb.name = "machina4"                        # nombre de máquina
     vb.memory = "1024"
   end
 
