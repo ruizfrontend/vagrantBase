@@ -31,19 +31,19 @@ su vagrant -c 'git config --global alias.st status'
 
 su vagrant -c 'git config --global user.name "ruizfrontend"'
 su vagrant -c 'git config --global user.email ruizfrontend@gmail.com'
-cat /vagrant/git-show-branch.txt >> $HOME/.bashrc
+su vagrant -c 'cat /vagrant/git-show-branch.txt >> $HOME/.bashrc'
 
-echo 'export PATH=$HOME/local/bin:$PATH' >> /home/vagrant/.profile
+su vagrant -c "echo 'export PATH=$HOME/local/bin:$PATH' >> /home/vagrant/.profile"
 
 echo "--- Installing node.js ---"
-curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
-sudo apt-get install -y nodejs
+su vagrant -c 'curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -'
+su vagrant -c 'apt-get install -y nodejs'
 
-sudo npm install -g grunt-cli
-sudo npm install -g yo
-sudo npm install -g bower
-sudo npm install -g cordova
-sudo npm install -g ionic
+su vagrant -c 'npm install -g grunt-cli'
+su vagrant -c 'npm install -g yo'
+su vagrant -c 'npm install -g bower'
+su vagrant -c 'npm install -g cordova'
+su vagrant -c 'npm install -g ionic'
 
 echo "--- Installing Ruby ---"
 sudo apt-get update
@@ -67,12 +67,13 @@ sed -i "s/display_errors = .*/display_errors = On/" /etc/php5/apache2/php.ini
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 echo "--- Install Composer (PHP package manager) ---"
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
+su vagrant -c 'curl -sS https://getcomposer.org/installer | php'
 
-sudo a2dissite default
-sudo cp /vagrant/vagrant.vhost /etc/apache2/sites-available/
-sudo a2ensite vagrant
+su vagrant -c 'sudo mv composer.phar /usr/local/bin/composer'
+
+su vagrant -c 'a2dissite default'
+su vagrant -c 'cp /vagrant/vagrant.conf /etc/apache2/sites-available/'
+su vagrant -c 'a2ensite vagrant'
 
 ln -s /vagrant/www ~/www
 sudo rm -rf /var/www/

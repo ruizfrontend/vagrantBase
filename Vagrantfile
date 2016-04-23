@@ -5,9 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.box = "precise32"
-
-    config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+    config.vm.box = "ubuntu/trusty64"
 
     # Create a forwarded port mapping which allows access to a specific port
     # within the machine from a port on the host machine. In the example below,
@@ -19,15 +17,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network "private_network", ip: "192.168.33.10"
 
     # Use NFS for the shared folder
-    config.vm.synced_folder "./files", "/vagrant",
-        id: "core",
-        :nfs => true,
-        :mount_options => ['nolock,vers=3,udp,noatime,actimeo=2,fsc']
+    config.vm.synced_folder "./files", "/vagrant", owner: "vagrant", group: "www-data", mount_options: ["dmode=775,fmode=664"]
+
 
     config.vm.provider "virtualbox" do |vb|
      # Customize the amount of memory on the VM:
         vb.memory = "2048"
-        vb.name = "vagrant2.eldiario.es"
+        vb.name = "local.foreman.com"
 
         # Set server cpus
         vb.customize ["modifyvm", :id, "--cpus", "2"]
